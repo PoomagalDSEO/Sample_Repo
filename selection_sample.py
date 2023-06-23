@@ -1,44 +1,24 @@
 import streamlit as st
+import pandas as pd
+# To give title for the page
+st.title('Image Prompter')
 
+# To give header for the page
+st.header('Start to Prompt here')
 
-@st.cache_data #cache data within app to reuse the same data again
-def get_for_structure(AUDIDENCE_TPYES):# condition for STRUCTURE_TYPE Output
-    if AUDIDENCE_TPYES == 'Beginner':
-        return ['Problem-Solution']
-        # return ['Descriptive']
-    elif AUDIDENCE_TPYES == 'Intermediate':
-        return ['Thematic']
-        # return ['Factual']
-    elif AUDIDENCE_TPYES == 'Expert':
-        return ['Chronological']
-        # return ['Persuasive']
-    else:
-        return []
-def get_for_narrative(AUDIDENCE_TPYES):# condition for NARRATIVE_TYPE Output
-    if AUDIDENCE_TPYES == 'Beginner':
-        return ['Descriptive']
-    elif AUDIDENCE_TPYES == 'Intermediate':
-        return ['Factual']
-    elif AUDIDENCE_TPYES == 'Expert':
-        return ['Persuasive']
-    else:
-        return []
+# To give sub-headingings
+st.subheader('Going to create prompt for Avatar')
 
-def main():
-    # Add your previous condition input, e.g., a selectbox
-    AUDIDENCE_TPYES = st.selectbox('AUDIDENCE_TPYES', ['Beginner', 'Intermediate', 'Expert'])
-    # STRUCTURE_TPYES = st.selectbox('STRUCTURE_TPYES', ['Thematic', 'Problem-Solution', 'Chronological', 'Cause-Effect'])
-    # NARRATIVE_TPYES = st.selectbox('NARRATIVE_TPYES', ['Factual', 'Persuasive', 'Anecdotal', 'Descriptive'])
-    # to Call the function to get the structure and narrative type based on the option selected in audience type
-    STRUCTURE_TYPE = get_for_structure(AUDIDENCE_TPYES)
-    NARRATIVE_TYPE = get_for_narrative(AUDIDENCE_TPYES)
+# if st.button('Create'): # to create button
+df1 = pd.DataFrame({'second_col': ['Round', 'Oval-shaped', 'Cat', 'Wide-set']})
+df2 = pd.DataFrame(
+   {'third_col': ['Amber', 'Fair', 'Beige', 'Bronze', 'Brown', 'Caramel', 'Tan', 'Tawny', 'Walnut', 'Wheat']})
+df = pd.DataFrame(
+          {'first column': ['Oval', 'Round', 'Square', 'Heart-shaped', 'Diamond-shaped', 'Long or rectangular']})
+Facial_Shape = st.selectbox('Facial shape', df['first column'])
+Eye_Shape = st.selectbox('eye shape', df1['second_col'])
+Skin_Tone = st.selectbox('Skin Tone', df2['third_col'])
+'create an avatar with facial shape as', Facial_Shape, 'face with eye shape as', Eye_Shape, 'eyes with', Skin_Tone, 'skin tone'
+    # else:
+     # st.write('Goodbye')
 
-    # Show the final options in a selectbox or it can be written as final decision
-    selected_option = st.selectbox('STRUCTURE_TYPE', STRUCTURE_TYPE)
-    selected_option1 = st.selectbox('SNARRATIVE_TYPE', NARRATIVE_TYPE)
-
-    # Display the selected option
-    st.write('Selected Option:', selected_option)
-    st.write('Selected Option:', selected_option1)
-if __name__ == '__main__':
-    main()
