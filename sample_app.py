@@ -5,7 +5,7 @@ st.title('Image Prompter')
 
 st.header('Start to Prompt here')
 st.subheader('Going to create prompt for Avatar')
-if st.button('Create'):
+# if st.button('Create'):
      df1 = pd.DataFrame({'second_col': ['Round', 'Oval-shaped', 'Cat', 'Wide-set']})
      df2 = pd.DataFrame(
           {'third_col': ['Amber', 'Fair', 'Beige', 'Bronze', 'Brown', 'Caramel', 'Tan', 'Tawny', 'Walnut', 'Wheat']})
@@ -15,8 +15,6 @@ if st.button('Create'):
      Eye_Shape = st.selectbox('eye shape', df1['second_col'])
      Skin_Tone = st.selectbox('Skin Tone', df2['third_col'])
      'create an avatar with facial shape as', Facial_Shape, 'face with eye shape as', Eye_Shape, 'eyes with', Skin_Tone, 'skin tone'
-
-     # st.write('Why hello there')
-else:
-     st.write('Goodbye')
+    # else:
+     # st.write('Goodbye')
 
