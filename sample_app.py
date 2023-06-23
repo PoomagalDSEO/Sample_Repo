@@ -1,11 +1,15 @@
 import streamlit as st
 import pandas as pd
-
+# To give title for the page
 st.title('Image Prompter')
 
+# To give header for the page
 st.header('Start to Prompt here')
+
+# To give sub-headingings
 st.subheader('Going to create prompt for Avatar')
-# if st.button('Create'):
+
+# if st.button('Create'): # to create button
 df1 = pd.DataFrame({'second_col': ['Round', 'Oval-shaped', 'Cat', 'Wide-set']})
 df2 = pd.DataFrame(
    {'third_col': ['Amber', 'Fair', 'Beige', 'Bronze', 'Brown', 'Caramel', 'Tan', 'Tawny', 'Walnut', 'Wheat']})
