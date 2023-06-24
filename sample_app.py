@@ -41,5 +41,11 @@ def main():
     st.code(f"AUDIENCE_TPYES = {AUDIDENCE_TPYE}")
     st.code(f"STRUCTURE_TPYES = {STRUCTURE_TPYE}")
     st.code(f"NARRATIVE_TPYES = {NARRATIVE_TPYE}")
+
+uploaded_file = st.file_uploader('Upload an image', type=['jpg', 'jpeg', 'png'])
+
+    if uploaded_file is not None:
+        st.image(uploaded_file, caption='Uploaded Image')
+
 if __name__ == '__main__':
     main()
