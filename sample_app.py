@@ -1,45 +1,37 @@
-
 import streamlit as st
 
-@st.cache_data #cache data within app to reuse the same data again
-def get_for_structure(AUDIDENCE_TPYES):
-    if AUDIDENCE_TPYES == 'Beginner':
-        return ['Thematic', 'Problem-Solution']
-        # return ['Descriptive']
-    elif AUDIDENCE_TPYES == 'Intermediate':
-        return ['Problem-Solution', 'Chronological']
-        # return ['Factual']
-    elif AUDIDENCE_TPYES == 'Expert':
-        return ['Chronological', 'Cause-Effect']
-        # return ['Persuasive']
-    else:
-        return []
-def get_for_narrative(AUDIDENCE_TPYES):
-    if AUDIDENCE_TPYES == 'Beginner':
-        return ['Descriptive']
-    elif AUDIDENCE_TPYES == 'Intermediate':
-        return ['Factual']
-    elif AUDIDENCE_TPYES == 'Expert':
-        return ['Persuasive']
-    else:
-        return []
-
+# @st.cache_data #cache data within app to reuse the same data again
 # Main Streamlit app code
 def main():
-    # Add your previous condition input, e.g., a selectbox
-    AUDIDENCE_TPYES = st.selectbox('AUDIDENCE_TPYES', ['Beginner', 'Intermediate', 'Expert'])
-    # STRUCTURE_TPYES = st.selectbox('STRUCTURE_TPYES', ['Thematic', 'Problem-Solution', 'Chronological', 'Cause-Effect'])
-    # NARRATIVE_TPYES = st.selectbox('NARRATIVE_TPYES', ['Factual', 'Persuasive', 'Anecdotal', 'Descriptive'])
-    # to Call the function to get the structure and narrative type based on the option selected in audience type
-    STRUCTURE_TYPE = get_for_structure(AUDIDENCE_TPYES)
-    NARRATIVE_TYPE = get_for_narrative(AUDIDENCE_TPYES)
+    AUDIDENCE_TPYE = st.selectbox('AUDIDENCE_TYPE', ['Beginner', 'Intermediate', 'Expert'])
+    STRUCTURE_TPYES = ['Thematic', 'Problem-Solution', 'Chronological', 'Cause-Effect']
+    NARRATIVE_TPYES = ['Factual', 'Persuasive', 'Anecdotal', 'Descriptive']
+    if AUDIDENCE_TPYE == 'Beginner':
+        STRUCTURE_TPYE = ['Thematic', 'Problem-Solution']
+        # return ['Descriptive']
+    elif AUDIDENCE_TPYE == 'Intermediate':
+        STRUCTURE_TPYE = ['Problem-Solution', 'Chronological']
+        # return ['Factual']
+    elif AUDIDENCE_TPYE == 'Expert':
+        STRUCTURE_TPYE = ['Chronological', 'Cause-Effect']
+        # return ['Persuasive']
+    else:
+        STRUCTURE_TPYE = []
 
-    # Show the final options in a selectbox or it can be written as final decision
-    selected_option = st.selectbox('STRUCTURE_TYPE', STRUCTURE_TYPE)
-    selected_option1 = st.selectbox('SNARRATIVE_TYPE', NARRATIVE_TYPE)
+    STRUCTURE_TPYE = st.selectbox('STRUCTURE TYPE', STRUCTURE_TPYE)
 
-    # Display the selected option
-    st.write('Selected Option:', selected_option)
-    st.write('Selected Option:', selected_option1)
+    if STRUCTURE_TPYE == 'Thematic':
+        return ['Descriptive']
+    elif STRUCTURE_TPYE == 'Problem-Solution':
+        NARRATIVE_TPYE = ['Factual']
+    elif STRUCTURE_TPYE == 'Chronological':
+        NARRATIVE_TPYE = ['Persuasive']
+    elif STRUCTURE_TPYE == 'Cause-Effect':
+        NARRATIVE_TPYE = ['Anecdotal']
+    else:
+        NARRATIVE_TPYE = []
+
+    st.write(f"NARRATIVE TYPE IS:   {NARRATIVE_TPYE}")
+
 if __name__ == '__main__':
     main()
