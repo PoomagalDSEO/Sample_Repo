@@ -1,5 +1,4 @@
 pip install whois
 pip install gspread
 pip install pandas
-pip3 install python-whois
 pip3 install validators
